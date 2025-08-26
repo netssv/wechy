@@ -1,0 +1,45 @@
+# Streamlit Cloud Deployment Configuration
+
+## App Configuration
+app_file = "streamlit_web_audit.py"
+python_version = "3.9"
+
+## Secrets (if needed)
+# Add these in Streamlit Cloud dashboard -> Settings -> Secrets
+# [general]
+# api_key = "your_api_key_here"
+
+## Resource Limits
+# CPU: 1 core
+# Memory: 1 GB
+# Timeout: 30 seconds per request
+
+## Environment Variables
+[env]
+STREAMLIT_THEME_PRIMARY_COLOR = "#667eea"
+STREAMLIT_THEME_BACKGROUND_COLOR = "#ffffff"
+STREAMLIT_THEME_SECONDARY_BACKGROUND_COLOR = "#f8f9fa"
+STREAMLIT_THEME_TEXT_COLOR = "#262730"
+
+## Custom Domain (optional)
+# custom_domain = "your-audit-tool.streamlit.app"
+
+## Analytics
+enable_analytics = true
+
+## Error Handling
+show_error_details = true
+show_traceback_on_error = false
+
+## Performance
+max_upload_size = 200
+enable_cors = false
+enable_xsrf_protection = true
+
+## Caching
+ttl = 600  # 10 minutes cache for DNS lookups
+max_entries = 100
+
+## Rate Limiting
+max_requests_per_minute = 60
+max_concurrent_users = 100
