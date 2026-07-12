@@ -1,23 +1,30 @@
-# 🔍 AI-Agentic Web Audit Tool
+# 🔍 wechy — Web Check Your Site
 
-Un auditor de sitios web inteligente, modular y extensible con soporte para agentes de IA autónomos y herramientas estructuradas (skills agénticas).
+Una herramienta interactiva de terminal (TUI) para diagnóstico web, auditoría de seguridad y análisis de infraestructura, potenciada por un agente de IA autónomo con skills agénticas.
 
 ---
 
 ## ✨ Características
 
-- **🤖 Agente Orquestador Central (`AuditAgent`)**: Razona autónomamente qué herramientas invocar según el dominio y modo de auditoría.
-- **🧩 Arquitectura de Skills Agénticas**: Sistema modular donde cada herramienta (DNS, SSL, Performance, Security Headers, WHOIS, Tech Detection) se autodescribe para ser consumida mediante *Function Calling* por el LLM.
-- **🎨 Interfaz Streamlit Renovada**: Panel de control limpio y interactivo que muestra las visualizaciones y el análisis generado por la IA en tiempo real.
-- **⚙️ Configuración Desacoplada**: Centralización de umbrales, timeouts y claves en variables de entorno.
-- **🧠 Personalización de Agentes**: Incluye especificaciones en `.agents/` para guiar a asistentes de desarrollo de IA.
+- **🤖 AI Full Audit**: Agente orquestador que razona y ejecuta skills de forma autónoma vía LLM
+- **🌐 DNS Lookup**: Consultas `dig` y `nslookup` directas desde la TUI
+- **🔒 SSL/TLS Inspector**: Análisis de certificados con `openssl`
+- **📡 HTTP Probe**: Tiempos de respuesta y headers con `curl`
+- **🛡️ Security Headers Scan**: Evaluación de HSTS, CSP, X-Frame-Options y más
+- **📧 Email Domain Validator**: Verificación de MX, SPF, DKIM y DMARC
+- **📄 WHOIS Lookup**: Información de registro del dominio
+- **🔧 Tech Detection**: Fingerprinting de servidor, CMS y frameworks
 
 ---
 
-## 🚀 Inicio Rápido
+## 🚀 Instalación
 
-### 1. Clonar e Instalar Dependencias
+### Desde PyPI (cuando esté publicado)
+```bash
+pip install wechy
+```
 
+### Desde el repositorio
 ```bash
 git clone https://github.com/netssv/enhanced-web-audit-script.git
 cd enhanced-web-audit-script
@@ -26,32 +33,52 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Configurar el LLM (Opcional)
+---
 
-Establece tu proveedor y clave API para el agente de IA:
+## 💻 Uso
 
+### TUI Interactiva (recomendada)
 ```bash
-export LLM_PROVIDER="google"
-export LLM_MODEL="gemini-2.0-flash"
-export LLM_API_KEY="tu-api-key"
+wechy
 ```
 
-### 3. Ejecutar la Aplicación
-
-Puedes lanzar la interfaz gráfica:
-
+O si estás ejecutando desde el repositorio:
 ```bash
-streamlit run streamlit_web_audit.py
+.venv/bin/python tui_app.py
 ```
 
-O realizar una auditoría desde la terminal:
+Se abrirá un menú principal con todas las herramientas disponibles. Selecciona una con las flechas del teclado, ingresa el dominio/URL y presiona **Run**.
 
+### CLI Rápida (sin interfaz)
 ```bash
-python demo_audit.py google.com
+.venv/bin/python demo_audit.py google.com
+```
+
+### Interfaz Web (Streamlit)
+```bash
+pip install wechy[streamlit]
+.venv/bin/streamlit run streamlit_web_audit.py
 ```
 
 ---
 
-## 🏗️ Guía Técnica
+## ⚙️ Configuración del Agente de IA (Opcional)
 
-Consulta las [TECHNICAL_NOTES.md](file:///home/netss/Projects/enhanced-web-audit-script/TECHNICAL_NOTES.md) para comprender a fondo la arquitectura, el flujo agéntico y cómo extender el sistema con nuevas skills agénticas.
+Para habilitar el análisis inteligente con LLM:
+```bash
+export LLM_PROVIDER="google"     # google | openai | ollama
+export LLM_MODEL="gemini-2.0-flash"
+export LLM_API_KEY="tu-api-key"
+```
+
+---
+
+## 🏗️ Arquitectura
+
+Consulta [TECHNICAL_NOTES.md](TECHNICAL_NOTES.md) para la documentación completa de la arquitectura agéntica, el sistema de skills y las decisiones de diseño.
+
+---
+
+## 📝 Licencia
+
+MIT License — ver [LICENSE](LICENSE).
