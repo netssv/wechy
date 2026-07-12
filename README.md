@@ -15,6 +15,9 @@ Welcome to **Wechy Web Techy Overview**!
 
 This project provides a robust, purely terminal-based user interface (TUI) for system and web tech administration, completely distinct from any legacy web-based or monolithic approaches.
 
+## Project Refactoring & Architecture
+This new TUI interface was built by deeply refactoring the legacy code from the `monolith_old` folder. We successfully decoupled the monolithic logic, separating the configuration, UI presentation, and core behavior into a highly modular, component-based terminal architecture using Textual. This allows for far greater maintainability, reusability, and easier integration with AI Agents.
+
 ## Features
 - **Intuitive TUI**: Navigate via keyboard through a structured, responsive terminal interface.
 - **Modular Architecture**: Built from the ground up for maintainability and scalability in terminal environments.
