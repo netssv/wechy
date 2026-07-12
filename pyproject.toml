@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "wechy"
-version = "0.1.1"
+version = "0.1.2"
 description = "A Terminal User Interface (TUI) for Web and System Tech Overview"
 readme = "README.md"
 authors = [
@@ -22,3 +22,6 @@ classifiers = [
 
 [project.scripts]
 wechy = "tui_app.main:app.run"
+
+[tool.setuptools.packages.find]
+include = ["tui_app*"]
