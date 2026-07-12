@@ -11,3 +11,12 @@ auditweb.conf
 .DS_Store
 *.swp
 *~
+
+# Python and Build files
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+build/
+dist/
+*.egg-info/
