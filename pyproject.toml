@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wechy"
+version = "0.1.0"
+description = "A Terminal User Interface (TUI) for Web and System Tech Overview"
+readme = "README.md"
+authors = [
+  { name="netssv" }
+]
+requires-python = ">=3.8"
+dependencies = [
+    "textual==0.52.1",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+]
+
+[project.scripts]
+wechy = "tui_app.main:app.run"
