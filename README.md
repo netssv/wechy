@@ -1,87 +1,61 @@
-# 🔍 Enhanced Web Audit Script
+# wechy - Web Check Your Site
 
-A comprehensive bash tool for website analysis with DNS propagation, compression analysis, and performance testing.
+Una herramienta de terminal (TUI) interactiva para auditar sitios web, revisar seguridad y analizar infraestructura. Todo apoyado por un agente de IA y skills autonomas.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Bash](https://img.shields.io/badge/Bash-4.0+-brightgreen.svg)](https://www.gnu.org/software/bash/)
+## Que incluye
 
-## ✨ Features
+- AI Full Audit: Un agente que evalua y ejecuta herramientas por su cuenta.
+- DNS Lookup: Consultas rapidas de red sin salir de la TUI usando dig y nslookup.
+- SSL/TLS Inspector: Revisa los certificados y cadenas completas con openssl.
+- HTTP Probe: Checa la velocidad de respuesta y los headers.
+- Security Headers Scan: Verifica si un sitio tiene buenas practicas de seguridad (HSTS, CSP, etc).
+- Email Domain Validator: Valida registros importantes de correo como MX, SPF, DKIM y DMARC.
+- WHOIS Lookup: Informacion de registro del dominio.
+- Tech Detection: Identifica el stack de servidor y los frameworks web.
 
-- **🌍 Global DNS Propagation**: Tests 16 DNS servers across 6 regions with geographic info
-- **📊 Smart Compression Analysis**: Shows page sizes and compression effectiveness
-- **⚡ Performance Testing**: Response times, ratings, and benchmarks
-- **🏗️ Modular Design**: Clean, maintainable architecture
+## Como instalarlo
 
-## 🚀 Quick Start
-
-```bash
-# Clone and setup
-git clone https://github.com/netssv/enhanced-web-audit-script.git
-cd enhanced-web-audit-script
-chmod +x auditweb.sh
-
-# Quick website check
-./auditweb.sh example.com quick
-
-# Full comprehensive audit
-./auditweb.sh https://github.com
-
-# DNS propagation only
-./auditweb.sh --dns-check cloudflare.com
-```
-
-## 📋 Usage Examples
+Si quieres correrlo directamente desde el repositorio:
 
 ```bash
-# Quick health check
-./auditweb.sh github.com quick
-
-# Monitor DNS changes
-./auditweb.sh --dns-monitor example.com 60 10
-
-# Self-test
-./auditweb.sh --self-test
+git clone https://github.com/netssv/wechy.git
+cd wechy
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
-## 📊 Sample Output
+Pronto estara en PyPI y podras instalarlo solo con `pip install wechy`.
 
-### Compression Analysis
-```
-Compression Analysis:
-  Uncompressed Size   :     56.1 KB
-  Compressed Size     :     13.9 KB
-  Compression Type    :   Brotli
-  Size Reduction      :     75.1%
-  ✅ Compression enabled (Brotli)
+## Como usarlo
+
+La manera mas facil y recomendada de usarlo es iniciar la TUI interactiva. Solo tienes que correr esto en tu terminal:
+
+```bash
+.venv/bin/python tui_app_run.py
 ```
 
-### DNS Propagation
-```
-Google Primary     [8.8.8.8] 🇺🇸 USA: 142.250.64.142
-Cloudflare Primary [1.1.1.1] 🌍 Global: 142.251.16.101
-Yandex Primary     [77.88.8.8] 🇷🇺 Russia: 209.85.233.139
+Vas a ver un menu principal en tu pantalla. Usa las flechas de tu teclado para moverte entre las opciones, escribe el dominio o URL que quieras revisar y presiona Run. Para regresar al menu, solo presiona la tecla Escape.
 
-Propagation status: INCONSISTENT (6 unique values)
+Si prefieres usarlo en modo comando directo sin la interfaz interactiva, puedes correr:
+```bash
+.venv/bin/python demo_audit.py google.com
 ```
 
-## 🛠️ Requirements
+## Configurar el agente de IA (Opcional)
 
-- `bash 4.0+`
-- `curl`, `dig`, `whois`, `bc`
+Si quieres habilitar el analisis inteligente que te da recomendaciones y puntajes, solo necesitas configurar tus credenciales en la terminal:
 
-## 🤝 Contributing
+```bash
+export LLM_PROVIDER="google"
+export LLM_MODEL="gemini-2.0-flash"
+export LLM_API_KEY="tu-api-key"
+```
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/new-feature`
-3. Test your changes: `./auditweb.sh --self-test`
-4. Submit a pull request
+## Sobre la arquitectura
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+Si te interesa como esta construido el codigo, puedes echarle un ojo al archivo TECHNICAL_NOTES.md. Ahi detallamos como pasamos de un monolito a una arquitectura basada en agentes y skills dinamicas.
 
-## 📝 License
+## Licencia
 
-MIT License - see [LICENSE](LICENSE) file.
-
----
-
-**⭐ Star this repo if it helps you audit your web infrastructure!**
+Este proyecto usa la licencia MIT. Puedes revisar el archivo LICENSE para mas detalles.
